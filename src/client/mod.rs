@@ -1,6 +1,6 @@
 use std::convert::TryInto;
 
-use failure::Error;
+use anyhow::Error;
 use http::Uri;
 use rand::Rng;
 

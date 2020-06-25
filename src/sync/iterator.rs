@@ -1,6 +1,6 @@
 use crate::client::ILazyClient;
 use crate::sync::{Query, TxnReadOnlyType};
-use failure::Error;
+use anyhow::Error;
 use serde::de::DeserializeOwned;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -128,7 +128,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// use dgraph_tonic::sync::AclClientType;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::LazyChannel;
-    /// use failure::Error;
+    /// use anyhow::Error;
     /// use serde::Deserialize;
     ///
     /// #[cfg(not(feature = "acl"))]
@@ -200,7 +200,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// use dgraph_tonic::sync::AclClientType;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::LazyChannel;
-    /// use failure::Error;
+    /// use anyhow::Error;
     /// use std::collections::HashMap;
     /// use serde::Deserialize;
     ///
@@ -269,7 +269,7 @@ mod tests {
     #[cfg(feature = "acl")]
     use crate::LazyChannel;
     use crate::Mutation;
-    use failure::Error;
+    use anyhow::Error;
     use std::collections::HashMap;
 
     #[cfg(not(feature = "acl"))]

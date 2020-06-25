@@ -8,8 +8,8 @@ use crate::sync::txn::TxnType as SyncTxn;
 use crate::sync::{TxnBestEffortType, TxnMutatedType, TxnReadOnlyType};
 use crate::txn::TxnType;
 use crate::Result;
+use anyhow::Error;
 use async_trait::async_trait;
-use failure::Error;
 
 ///
 /// Inner state for logged Client

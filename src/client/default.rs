@@ -3,8 +3,8 @@ use crate::client::{balance_list, rnd_item, ClientState, ClientVariant, IClient}
 use crate::{
     Endpoint, Endpoints, Result, TxnBestEffortType, TxnMutatedType, TxnReadOnlyType, TxnType,
 };
+use anyhow::Error;
 use async_trait::async_trait;
-use failure::Error;
 use http::Uri;
 use std::convert::TryInto;
 use tonic::transport::Channel;

@@ -6,8 +6,8 @@ use crate::sync::client::{ClientState, ClientVariant, IClient};
 use crate::sync::txn::{TxnBestEffortType, TxnMutatedType, TxnReadOnlyType, TxnType as SyncTxn};
 use crate::txn::TxnType;
 use crate::{Endpoints, Result};
+use anyhow::Error;
 use async_trait::async_trait;
-use failure::Error;
 use http::Uri;
 use std::convert::TryInto;
 

@@ -1,7 +1,7 @@
 use crate::api::dgraph_client::DgraphClient;
 use crate::Result;
+use anyhow::Error;
 use async_trait::async_trait;
-use failure::Error;
 use std::fmt::Debug;
 use tonic::transport::Channel;
 

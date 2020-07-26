@@ -127,18 +127,27 @@ impl<S: IClient> DerefMut for ClientVariant<S> {
     }
 }
 
-impl<C: IClient> ClientVariant<C> {
+///
+/// Dgraph Client can create transactions:
+///
+/// * txn,
+/// * read only
+/// * best effort,
+/// * mutated
+///
+pub trait TransactionFactory<C>
+where
+    C: IClient,
+{
     ///
     /// Return new stub with grpc client implemented according to actual variant.
     ///
-    fn any_stub(&self) -> Stub<C::Client> {
-        Stub::new(self.extra.client())
-    }
+    fn any_stub(&self) -> Stub<C::Client>;
 
     ///
     /// Return transaction in default state, which can be specialized into ReadOnly or Mutated
     ///
-    pub fn new_txn(&self) -> TxnType<C::Client> {
+    fn new_txn(&self) -> TxnType<C::Client> {
         TxnType::new(self.any_stub())
     }
 
@@ -148,7 +157,7 @@ impl<C: IClient> ClientVariant<C> {
     /// Read-only transactions are useful to increase read speed because they can circumvent the
     /// usual consensus protocol.
     ///
-    pub fn new_read_only_txn(&self) -> TxnReadOnlyType<C::Client> {
+    fn new_read_only_txn(&self) -> TxnReadOnlyType<C::Client> {
         self.new_txn().read_only()
     }
 
@@ -160,17 +169,28 @@ impl<C: IClient> ClientVariant<C> {
     /// of outbound requests to Zero. This may yield improved latencies in read-bound workloads where
     /// linearizable reads are not strictly needed.
     ///
-    pub fn new_best_effort_txn(&self) -> TxnBestEffortType<C::Client> {
+    fn new_best_effort_txn(&self) -> TxnBestEffortType<C::Client> {
         self.new_read_only_txn().best_effort()
     }
 
     ///
     /// Create new transaction which can do mutate, commit and discard operations
     ///
-    pub fn new_mutated_txn(&self) -> TxnMutatedType<C::Client> {
+    fn new_mutated_txn(&self) -> TxnMutatedType<C::Client> {
         self.new_txn().mutated()
     }
+}
 
+impl<C: IClient> TransactionFactory<C> for ClientVariant<C> {
+    ///
+    /// Return new stub with grpc client implemented according to actual variant.
+    ///
+    fn any_stub(&self) -> Stub<C::Client> {
+        Stub::new(self.extra.client())
+    }
+}
+
+impl<C: IClient> ClientVariant<C> {
     ///
     /// The /alter endpoint is used to create or change the schema.
     ///

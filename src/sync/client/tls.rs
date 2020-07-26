@@ -6,7 +6,9 @@ use http::Uri;
 
 use crate::client::lazy::LazyClient;
 use crate::client::tls::LazyTlsChannel;
-use crate::client::{AclClientType, IClient as IAsyncClient, TlsClient as AsyncTlsClient};
+use crate::client::{
+    AclClientType, IClient as IAsyncClient, TlsClient as AsyncTlsClient, TransactionFactory,
+};
 use crate::sync::client::{ClientState, ClientVariant, IClient};
 use crate::sync::txn::{TxnBestEffortType, TxnMutatedType, TxnReadOnlyType, TxnType as SyncTxn};
 use crate::txn::TxnType;

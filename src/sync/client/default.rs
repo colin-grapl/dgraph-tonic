@@ -7,7 +7,9 @@ use http::Uri;
 use crate::client::lazy::LazyClient;
 #[cfg(feature = "acl")]
 use crate::client::AclClientType;
-use crate::client::{Client as AsyncClient, IClient as IAsyncClient, LazyChannel};
+use crate::client::{
+    Client as AsyncClient, IClient as IAsyncClient, LazyChannel, TransactionFactory,
+};
 use crate::sync::client::{ClientState, ClientVariant, IClient};
 use crate::sync::txn::{TxnBestEffortType, TxnMutatedType, TxnReadOnlyType, TxnType as SyncTxn};
 use crate::txn::TxnType;

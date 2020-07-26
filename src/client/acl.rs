@@ -13,7 +13,7 @@ use crate::api::{IDgraphClient, Jwt, LoginRequest};
 use crate::client::lazy::{ILazyChannel, ILazyClient};
 #[cfg(feature = "tls")]
 use crate::client::tls::LazyTlsChannel;
-use crate::client::{rnd_item, ClientVariant, IClient};
+use crate::client::{rnd_item, ClientVariant, IClient, TransactionFactory};
 use crate::{LazyChannel, TxnBestEffortType, TxnMutatedType, TxnReadOnlyType, TxnType};
 
 ///

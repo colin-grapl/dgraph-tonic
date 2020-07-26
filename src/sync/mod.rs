@@ -6,7 +6,9 @@ pub use crate::sync::client::{
 pub use crate::sync::client::{
     AclTlsClient, TxnAclTls, TxnAclTlsBestEffort, TxnAclTlsMutated, TxnAclTlsReadOnly,
 };
-pub use crate::sync::client::{Client, Txn, TxnBestEffort, TxnMutated, TxnReadOnly};
+pub use crate::sync::client::{
+    Client, TransactionFactory, Txn, TxnBestEffort, TxnMutated, TxnReadOnly,
+};
 #[cfg(feature = "tls")]
 pub use crate::sync::client::{TlsClient, TxnTls, TxnTlsBestEffort, TxnTlsMutated, TxnTlsReadOnly};
 pub use crate::sync::txn::{

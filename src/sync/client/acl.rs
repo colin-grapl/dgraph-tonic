@@ -5,7 +5,9 @@ use crate::client::acl::LazyAclClient;
 use crate::client::lazy::ILazyChannel;
 #[cfg(feature = "tls")]
 use crate::client::tls::LazyTlsChannel;
-use crate::client::{AclClientType as AsyncAclClient, IClient as IAsyncClient, LazyChannel};
+use crate::client::{
+    AclClientType as AsyncAclClient, IClient as IAsyncClient, LazyChannel, TransactionFactory,
+};
 use crate::sync::client::{ClientVariant, IClient};
 use crate::sync::txn::TxnType as SyncTxn;
 use crate::sync::{TxnBestEffortType, TxnMutatedType, TxnReadOnlyType};

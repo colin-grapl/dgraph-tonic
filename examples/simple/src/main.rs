@@ -1,5 +1,5 @@
 use chrono::prelude::*;
-use dgraph_tonic::{Client, Mutate, Mutation, Operation, Query};
+use dgraph_tonic::{Client, Mutate, Mutation, Operation, Query, TransactionFactory};
 use maplit::hashmap;
 use serde::{Deserialize, Serialize};
 

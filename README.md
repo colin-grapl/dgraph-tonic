@@ -137,7 +137,7 @@ dgraph-tonic = { version = "0.7", features = ["sync"] }
 ```
 
 ```rust
-use dgraph_tonic::sync::{Mutate, Client};
+use dgraph_tonic::sync::{Mutate, Client, TransactionFactory};
 
 fn main() {
   let p = Person {
@@ -202,7 +202,7 @@ Transaction is modeled with [The Typestate Pattern in Rust](http://cliffle.com/b
 Client provides several factory methods for transactions. These operations incur no network overhead.
 
 ```rust
-use dgraph_tonic::Client;
+use dgraph_tonic::{Client, TransactionFactory};
 
 #[tokio::main]
 async fn main() {
@@ -246,7 +246,7 @@ If you cannot use generics or traits object you can use predefined exported tran
 Example:
 
 ```rust
-use dgraph_tonic::{Mutate, Client};
+use dgraph_tonic::{Mutate, Client, TransactionFactory};
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Default, Debug)]
@@ -281,7 +281,7 @@ In `dgraph-1-0` a `Mutation::with_ignored_index_conflict()` can be applied on a 
 You can [specify your own key for returned uid](https://dgraph.io/docs/mutations/#setting-literal-values) like:
 
 ```rust
-use dgraph_tonic::{Mutate, Client};
+use dgraph_tonic::{Mutate, Client, TransactionFactory};
 use serde::{Serialize, Deserialize};
 use serde_json::json;
 
@@ -328,7 +328,7 @@ query all($a: string) {
 `Response` provides function `try_into()` which can be used for transforming returned JSON into coresponding struct object which implements serde `Deserialize` traits.
 
 ```rust
-use dgraph_tonic::{Client, Query};
+use dgraph_tonic::{Client, Query, TransactionFactory};
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
@@ -363,7 +363,7 @@ async fn main() {
 When running a schema query, the schema response is found in the `Schema` field of `Response`.
 
 ```rust
-use dgraph_tonic::Client;
+use dgraph_tonic::{Client, TransactionFactory};
 
 #[tokio::main]
 async fn main() {
@@ -404,7 +404,7 @@ use std::collections::HashMap;
 use failure::Error;
 use futures::pin_mut;
 use futures::stream::StreamExt;
-use dgraph_tonic::{Client, Response, Query};
+use dgraph_tonic::{Client, Response, Query, TransactionFactory};
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
@@ -443,7 +443,7 @@ The `txn.upsert(query, mutation)` function allows you to run upserts consisting 
 To know more about upsert, we highly recommend going through the docs at https://docs.dgraph.io/mutations/#upsert-block.
 
 ```rust
-use dgraph_tonic::{Mutate, Client};
+use dgraph_tonic::{Mutate, Client, TransactionFactory};
 
 #[tokio::main]
 async fn main() {
@@ -472,7 +472,7 @@ The upsert block allows specifying a conditional mutation block using an `@if` d
 See more about Conditional Upsert [Here](https://docs.dgraph.io/mutations/#conditional-upsert).
 
 ```rust
-use dgraph_tonic::{Client, Mutate};
+use dgraph_tonic::{Client, Mutate, TransactionFactory};
 
 #[tokio::main]
 async fn main() {
@@ -499,7 +499,7 @@ A mutated transaction can be committed using the `txn.commit()` method. If your 
 An error will be returned if other transactions running concurrently modify the same data that was modified in this transaction. It is up to the user to retry transactions when they fail.
 
 ```rust
-use dgraph_tonic::{Client, Mutate};
+use dgraph_tonic::{Client, Mutate, TransactionFactory};
 
 #[tokio::main]
 async fn main() {

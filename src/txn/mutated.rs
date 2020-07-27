@@ -132,7 +132,7 @@ pub trait Mutate: Query {
     /// # Example
     ///
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Mutate, TransactionFactory};
     /// use serde::Serialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -191,7 +191,7 @@ pub trait Mutate: Query {
     /// # Example
     ///
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Mutate, TransactionFactory};
     /// use serde::Serialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -249,7 +249,7 @@ pub trait Mutate: Query {
     ///
     /// Upsert with one mutation
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
     ///
@@ -289,7 +289,7 @@ pub trait Mutate: Query {
     ///
     /// Upsert with more mutations
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate, TransactionFactory};
     /// use std::collections::HashMap;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -381,7 +381,7 @@ pub trait Mutate: Query {
     ///
     /// Upsert with only one mutation
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate, TransactionFactory};
     /// use std::collections::HashMap;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -424,7 +424,7 @@ pub trait Mutate: Query {
     ///
     /// Upsert with more mutations
     /// ```
-    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate};
+    /// use dgraph_tonic::{Client, Mutation, Operation, Mutate, TransactionFactory};
     /// use std::collections::HashMap;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};

@@ -125,7 +125,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// # Example
     ///
     /// ```
-    /// use dgraph_tonic::sync::Client;
+    /// use dgraph_tonic::sync::{Client, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// #[cfg(feature = "acl")]
@@ -197,7 +197,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// # Example
     ///
     /// ```
-    /// use dgraph_tonic::sync::Client;
+    /// use dgraph_tonic::sync::{Client, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// #[cfg(feature = "acl")]
@@ -269,7 +269,7 @@ mod tests {
     use crate::sync::txn::mutated::Mutate;
     #[cfg(feature = "acl")]
     use crate::sync::AclClientType;
-    use crate::sync::Client;
+    use crate::sync::{Client, TransactionFactory};
     #[cfg(feature = "acl")]
     use crate::LazyChannel;
     use crate::Mutation;

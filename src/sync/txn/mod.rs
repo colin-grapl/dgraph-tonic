@@ -80,7 +80,7 @@ pub trait Query: Send + Sync {
     /// ```
     /// use std::collections::HashMap;
     /// use dgraph_tonic::Response;
-    /// use dgraph_tonic::sync::{Query, Client};
+    /// use dgraph_tonic::sync::{Query, Client, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use serde::Deserialize;
@@ -147,7 +147,7 @@ pub trait Query: Send + Sync {
     /// ```
     /// use std::collections::HashMap;
     /// use dgraph_tonic::Response;
-    /// use dgraph_tonic::sync::{Query, Client};
+    /// use dgraph_tonic::sync::{Query, Client, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use serde::Deserialize;
@@ -229,7 +229,7 @@ mod tests {
     #[cfg(feature = "acl")]
     use crate::sync::client::AclClientType;
     use crate::sync::client::Client;
-    use crate::sync::{Mutate, Query};
+    use crate::sync::{Mutate, Query, TransactionFactory};
     use crate::Mutation;
 
     #[cfg(not(feature = "acl"))]

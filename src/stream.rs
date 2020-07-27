@@ -61,7 +61,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// use anyhow::Result;
     /// use futures::pin_mut;
     /// use futures::stream::StreamExt;
-    /// use dgraph_tonic::Client;
+    /// use dgraph_tonic::{Client,TransactionFactory};
     /// use serde::Deserialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -137,7 +137,7 @@ impl<C: ILazyClient> TxnReadOnlyType<C> {
     /// use anyhow::Result;
     /// use futures::pin_mut;
     /// use futures::stream::StreamExt;
-    /// use dgraph_tonic::{Client, Query};
+    /// use dgraph_tonic::{Client, Query, TransactionFactory};
     /// use serde::Deserialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -235,7 +235,7 @@ mod tests {
     use crate::client::Client;
     #[cfg(feature = "acl")]
     use crate::client::{AclClientType, LazyChannel};
-    use crate::{Mutate, Mutation};
+    use crate::{Mutate, Mutation, TransactionFactory};
 
     #[cfg(not(feature = "acl"))]
     async fn client() -> Client {

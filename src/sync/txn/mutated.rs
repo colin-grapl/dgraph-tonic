@@ -127,7 +127,7 @@ pub trait Mutate: Query {
     ///
     /// ```
     /// use dgraph_tonic::Mutation;
-    /// use dgraph_tonic::sync::{Mutate, Client};
+    /// use dgraph_tonic::sync::{Mutate, Client, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use serde::Serialize;
@@ -189,7 +189,7 @@ pub trait Mutate: Query {
     ///
     /// ```
     /// use dgraph_tonic::Mutation;
-    /// use dgraph_tonic::sync::{Client, Mutate};
+    /// use dgraph_tonic::sync::{Client, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use serde::Serialize;
@@ -249,7 +249,7 @@ pub trait Mutate: Query {
     /// Upsert with one mutation
     /// ```
     /// use dgraph_tonic::{Mutation, Operation};
-    /// use dgraph_tonic::sync::{Client, Mutate};
+    /// use dgraph_tonic::sync::{Client, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// #[cfg(feature = "acl")]
@@ -291,7 +291,7 @@ pub trait Mutate: Query {
     /// Upsert with more mutations
     /// ```
     /// use dgraph_tonic::{Mutation, Operation};
-    /// use dgraph_tonic::sync::{Client, Mutate};
+    /// use dgraph_tonic::sync::{Client, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use std::collections::HashMap;
@@ -385,7 +385,7 @@ pub trait Mutate: Query {
     /// Upsert with only one mutation
     /// ```
     /// use dgraph_tonic::{Mutation, Operation};
-    /// use dgraph_tonic::sync::{Client, Mutate};
+    /// use dgraph_tonic::sync::{Client, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use std::collections::HashMap;
@@ -430,7 +430,7 @@ pub trait Mutate: Query {
     /// Upsert with more mutations
     /// ```
     /// use dgraph_tonic::{Mutation, Operation};
-    /// use dgraph_tonic::sync::{Client, Mutate};
+    /// use dgraph_tonic::sync::{Client, Mutate, TransactionFactory};
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::sync::AclClientType;
     /// use std::collections::HashMap;

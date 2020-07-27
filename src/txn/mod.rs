@@ -99,7 +99,7 @@ pub trait Query: Send + Sync {
     ///
     /// ```
     /// use std::collections::HashMap;
-    /// use dgraph_tonic::{Client, Response, Query};
+    /// use dgraph_tonic::{Client, Response, Query, TransactionFactory};
     /// use serde::Deserialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -164,7 +164,7 @@ pub trait Query: Send + Sync {
     ///
     /// ```
     /// use std::collections::HashMap;
-    /// use dgraph_tonic::{Client, Response, Query};
+    /// use dgraph_tonic::{Client, Response, Query, TransactionFactory};
     /// use serde::Deserialize;
     /// #[cfg(feature = "acl")]
     /// use dgraph_tonic::{AclClientType, LazyChannel};
@@ -256,9 +256,9 @@ mod tests {
 
     use serde_derive::{Deserialize, Serialize};
 
-    use crate::client::Client;
     #[cfg(feature = "acl")]
     use crate::client::{AclClientType, LazyChannel};
+    use crate::client::{Client, TransactionFactory};
     use crate::{Mutate, Mutation};
 
     use super::*;
